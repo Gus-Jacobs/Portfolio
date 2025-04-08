@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    
+    <nav>
+        <div class="nav-glow"></div>
+        <div class="nav-shadow"></div>
+        <div class="hex-grid">
+            <div class="hex-row">
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+            </div>
+        </div>
+        <button class="hamburger">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
+        <ul id="nav">
+            <li><a href="#certificates" id="certificates-link">Certificates</a></li>
+            <li><a href="#projects" id="projects-link">Projects</a></li>
+            <li><a href="#about" id="about-link">About Me</a></li>
+            <li><a href="#skills" id="skills-link">Skills</a></li>
+        </ul>
+        <div class="nav-effects"></div>
+    </nav>
+
+    <div class="main-container">
+        <div class="background-image"></div>
+        <div class="background-image-mobile"></div>
+
+        <div class="code-screen">
+            <pre id="code-output"></pre>
+        </div>
+
+        <div class="svg-container">
+            <svg id="circuit-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
+                        <feMerge>
+                            <feMergeNode in="blur2"/>
+                            <feMergeNode in="blur1"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g id="svg-content"></g>
+            </svg>
+        </div>
+        <div class="svg-container-mobile">
+            <svg id="circuit-svg-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" preserveAspectRatio="none">
+                <defs>
+                    <filter id="glow-mobile">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
+                        <feMerge>
+                            <feMergeNode in="blur2"/>
+                            <feMergeNode in="blur1"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g id="svg-content-mobile"></g>
+            </svg>
+        </div>
+    </div>
+
+    <section id="certificates">
+        <div class="section-header">
+            <h2>My Certificates</h2>
+            <span class="close-section">&times;</span>
+        </div>
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="w3schools">W3Schools</button>
+            <button class="filter-btn" data-category="qrps">QRPs</button>
+            <button class="filter-btn" data-category="other">Other</button>
+        </div>
+        <div class="cert-grid"></div>
+        <div class="pagination">
+            <button class="prev-btn">&larr; Prev</button>
+            <span class="page-indicator">Page 1</span>
+            <button class="next-btn">Next &rarr;</button>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <h2>My Projects</h2>
+            <span class="close-section">&times;</span>
+        </div>
+        <div class="project-grid"></div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <span class="close-section">&times;</span>
+        </div>
+        <div class="about-tabs">
+            <button class="tab-btn active" data-tab="about-tab">About</button>
+            <button class="tab-btn" data-tab="education-tab">Education</button>
+            <button class="tab-btn" data-tab="experience-tab">Experience</button>
+        </div>
+        <div class="tab-content">
+            <div id="about-tab" class="tab-pane active">
+                <div class="about-content">
+                    <img src="img/profile.jpg" alt="Profile Picture" class="profile-img">
+                    <div class="bio">
+                        <p>Growing up on a farm taught me the value of hard work and problem-solving from an early age. These formative years instilled in me a strong work ethic and the ability to tackle challenges head-on, qualities that have served me well in both my professional and academic pursuits.</p>
+                        <p>At 13, my uncle introduced me to coding, sparking a passion that would shape my future. I quickly mastered HTML, CSS, and JavaScript, building my first websites within months. This early exposure to technology ignited my curiosity and set me on the path to becoming a developer.</p>
+                        <p>Now pursuing Computer Science in college, I bring the same determination I developed baling hay and fixing equipment to my software development. My unique background gives me a practical perspective on problem-solving and a relentless drive to create efficient, effective solutions.</p>
+                        <p>When I'm not coding, you can find me working on personal projects, learning new technologies, or enjoying outdoor activities. I believe in continuous learning and pushing beyond my comfort zone to grow both personally and professionally.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="education-tab" class="tab-pane">
+                <div class="education-grid">
+                    <div class="education-card">
+                        <img src="img/e1.jpg" alt="Seton Home Study School">
+                        <div class="education-info">
+                            <h3>Seton Home Study School</h3>
+                            <p>Years Attended: 2016 - 2022</p>
+                            <p>GPA: 3.2</p>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <img src="img/e2.png" alt="Northern Kentucky University">
+                        <div class="education-info">
+                            <h3>Northern Kentucky University</h3>
+                            <p>Years Attended: 2024 - Present</p>
+                            <p>Current GPA: 3.6</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gpa-graph">
+                    <canvas id="gpaChart"></canvas>
+                </div>
+            </div>
+            <div id="experience-tab" class="tab-pane">
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-front">
+                            <img src="img/w4.webp" alt="Cincinnati Insurance Companies">
+                            <div class="experience-info">
+                                <h3>Cincinnati Insurance Companies</h3>
+                                <p>Position: Software Engineer Intern</p>
+                                <p>Location: Fairfield, Ohio</p>
+                                <p>Time There: May 12, 2025 - Present</p>
+                                <button class="expand-btn">Click to Expand</button>
+                            </div>
+                        </div>
+                        <div class="experience-back">
+                            <div class="experience-description" id="cincinnati-desc">
+                                <p>This position begins May 12, 2025. Check back after that date for details about my work experience.</p>
+                            </div>
+                            <button class="back-btn">Click to Return</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="experience-front">
+                            <img src="img/wp1.jpg" alt="FedEx">
+                            <div class="experience-info">
+                                <h3>FedEx Ground</h3>
+                                <p>Position: Package Handler</p>
+                                <p>Location: Independence, Kentucky</p>
+                                <p>Time There: June 2024 - Present</p>
+                                <button class="expand-btn">Click to Expand</button>
+                            </div>
+                        </div>
+                        <div class="experience-back">
+                            <div class="experience-description">
+                                <p>At FedEx Ground, I've consistently exceeded performance standards while demonstrating exceptional leadership qualities. My package handling rate of 700 packages per hour nearly doubles the standard of 400, and my scanning speed of 380 packages/hour far surpasses the 160 package standard.</p>
+                                <p>I've achieved an 80% cube utilization in trailers (compared to the 64% standard) through strategic loading techniques. My initiative in training new hires and assisting other areas of the dock has been recognized by multiple managers, who have praised my work ethic during presort meetings.</p>
+                                <p>The "Gus Mentality" I've established - emphasizing efficiency, teamwork, and problem-solving - has become a model for others in the facility. I regularly help coworkers troubleshoot issues to maintain dock efficiency, often volunteering to assist other areas when they fall behind.</p>
+                            </div>
+                            <button class="back-btn">Click to Return</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="experience-front">
+                            <img src="img/wp2.jpg" alt="Walmart">
+                            <div class="experience-info">
+                                <h3>Walmart</h3>
+                                <p>Position: Sales Associate</p>
+                                <p>Location: Alexandria, Kentucky</p>
+                                <p>Time There: June 2024 - August 2024</p>
+                                <button class="expand-btn">Click to Expand</button>
+                            </div>
+                        </div>
+                        <div class="experience-back">
+                            <div class="experience-description">
+                                <p>During my time at Walmart, I quickly became known for my fast learning, positive attitude, and dedication to customer service. I mastered multiple departments within weeks, often being called upon to assist in areas outside my primary assignment due to my comprehensive knowledge of store operations.</p>
+                                <p>My performance caught the attention of the Asset Protection Manager for the USA region during a store visit. After observing my work and speaking with me, he personally commended me to the store manager and department managers for my exceptional knowledge and work ethic.</p>
+                                <p>I was offered a promotion to department manager within two months of employment, which I ultimately declined due to school commitments. My ability to balance speed and accuracy in customer transactions, along with my willingness to take on additional responsibilities, made me a valued team member during my tenure.</p>
+                            </div>
+                            <button class="back-btn">Click to Return</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="experience-front">
+                            <img src="img/wp3.jpg" alt="Hohman Renovations">
+                            <div class="experience-info">
+                                <h3>Hohman Renovations</h3>
+                                <p>Position: Laborer</p>
+                                <p>Location: Florence, Kentucky</p>
+                                <p>Time There: May 2023 - May 2024</p>
+                                <button class="expand-btn">Click to Expand</button>
+                            </div>
+                        </div>
+                        <div class="experience-back">
+                            <div class="experience-description">
+                                <p>As a laborer for Hohman Renovations, I developed a diverse skill set in residential construction and remodeling. I became proficient in drywall installation, framing, basic electrical work, plumbing, tile setting, and various finish work through hands-on experience at job sites.</p>
+                                <p>My ability to quickly learn new skills and solve problems on the job made me a valuable team member. I often took initiative to research proper techniques for unfamiliar tasks, ensuring high-quality results. The physical demands of the job strengthened my work ethic and taught me the importance of precision in craftsmanship.</p>
+                                <p>This experience gave me practical problem-solving skills that translate well to software development, particularly in troubleshooting and systematic thinking. The discipline and attention to detail I developed continue to benefit me in all areas of my work.</p>
+                            </div>
+                            <button class="back-btn">Click to Return</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <h2>My Skills</h2>
+            <span class="close-section">&times;</span>
+        </div>
+        <div class="skills-container">
+            <div class="skills-category" data-bg="code1.png">
+                <h3>Web Development</h3>
+                <div class="skills-grid">
+                    <div class="skill-item" data-skill="HTML">
+                        <div class="skill-icon">HTML</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="CSS">
+                        <div class="skill-icon">CSS</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="JavaScript">
+                        <div class="skill-icon">JavaScript</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category" data-bg="python.jpg">
+                <h3>Programming Languages</h3>
+                <div class="skills-grid">
+                    <div class="skill-item" data-skill="Python">
+                        <div class="skill-icon">Python</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="C">
+                        <div class="skill-icon">C</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="C#">
+                        <div class="skill-icon">C#</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 20%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category" data-bg="code2.jpg">
+                <h3>Frameworks & Libraries</h3>
+                <div class="skills-grid">
+                    <div class="skill-item" data-skill="Django">
+                        <div class="skill-icon">Django</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="jQuery">
+                        <div class="skill-icon">jQuery</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category" data-bg="csharp.png">
+                <h3>Other Technologies</h3>
+                <div class="skills-grid">
+                    <div class="skill-item" data-skill="Git">
+                        <div class="skill-icon">Git</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="SQL">
+                        <div class="skill-icon">SQL</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item" data-skill="PHP">
+                        <div class="skill-icon">PHP</div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="image-modal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image">
+            <button class="arrow prev-arrow">&larr;</button>
+            <button class="arrow next-arrow">&rarr;</button>
+        </div>
+    </div>
+
+    <div id="project-modal" class="modal">
+        <div class="modal-content project-modal-content">
+            <span class="close">&times;</span>
+            <button class="arrow prev-arrow">&larr;</button>
+            <button class="arrow next-arrow">&rarr;</button>
+            <div class="project-modal-columns">
+                <div class="project-info-column">
+                    <h3 class="project-modal-title"></h3>
+                    <pre class="project-modal-tech"></pre>
+                </div>
+                <div class="project-image-column">
+                    <video class="project-modal-video" autoplay loop muted></video>
+                    <div class="project-divider"></div>
+                    <p class="project-modal-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
