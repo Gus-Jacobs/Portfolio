@@ -948,6 +948,48 @@ section::-webkit-scrollbar-thumb {
     border-radius: 50%;
 }
 
+/* Styling for Bio Links */
+.bio-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.bio-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-lighter);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bio-link i {
+    font-size: 1.2rem;
+}
+
+.bio-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+}
+
+.bio-link.linkedin {
+    background: linear-gradient(135deg, #0077b5, #005582); /* LinkedIn colors */
+}
+
+.bio-link.github {
+    background: linear-gradient(135deg, #333, #000); /* GitHub colors */
+}
+
 .education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
