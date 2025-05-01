@@ -1466,19 +1466,17 @@ section::-webkit-scrollbar-thumb {
     .svg-container {
         display: none;
     }
-    .svg-container-mobile{
-        display:none;
-    }
     
-     .background-image-mobile {     /*peviously had svg-container-mobile */
+     .background-image-mobile,
+    .svg-container-mobile {
         display: flex;
         position: fixed;
         top: 50%;
         left: 50%;
-        width: 100vmax; /* Ensures both cover the viewport */
+        width: 100vmax;
         height: 100vmax;
-        transform: translate(-50%, -50%) rotate(90deg); /* Rotate and center */
-        transform-origin: center; /* Ensure rotation happens around the center */
+        transform: translate(-50%, -50%) rotate(90deg);
+        transform-origin: center;
         pointer-events: none;
     }
 
@@ -1491,7 +1489,7 @@ section::-webkit-scrollbar-thumb {
         opacity: 0.25;
     }
 
-    /*.svg-container-mobile {
+    .svg-container-mobile {
         z-index: -1; 
         overflow: visible;
     }
@@ -1503,7 +1501,7 @@ section::-webkit-scrollbar-thumb {
         width: 45%;
         height: 50%;
         preserveAspectRatio: xMidYMid slice;
-    }*/
+    }
 
     /* Mobile Navigation */
     nav {
