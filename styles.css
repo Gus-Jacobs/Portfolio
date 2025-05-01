@@ -1466,10 +1466,12 @@ section::-webkit-scrollbar-thumb {
     .svg-container {
         display: none;
     }
-
-    .background-image-mobile,
-    .svg-container-mobile {
-        display: none;
+    .svg-container-mobile{
+        display:none;
+    }
+    
+     .background-image-mobile {     /*peviously had svg-container-mobile */
+        display: flex;
         position: fixed;
         top: 50%;
         left: 50%;
@@ -1489,20 +1491,20 @@ section::-webkit-scrollbar-thumb {
         opacity: 0.25;
     }
 
-    .svg-container-mobile {
-        z-index: -1; /* SVGs appear above the background */
+    /*.svg-container-mobile {
+        z-index: -1; 
         overflow: visible;
     }
 
     #circuit-svg-mobile {
         position: absolute;
-        top: 5px; /* Adjusted to match your desired position at 684px */
-        left: -155px; /* Adjusted to match your desired position at 684px */
-        width: 45%; /* Shrink SVG to 40% of its original size */
-        height: 50%; /* Maintain aspect ratio */
+        top: 5px;
+        left: -155px;
+        width: 45%;
+        height: 50%;
         preserveAspectRatio: xMidYMid slice;
-        /* These values can be adjusted manually */
-    }
+    }*/
+
     /* Mobile Navigation */
     nav {
         position: fixed;
