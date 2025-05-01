@@ -1469,7 +1469,7 @@ section::-webkit-scrollbar-thumb {
 
     .background-image-mobile,
     .svg-container-mobile {
-        display: block;
+        display: none;
         position: fixed;
         top: 50%;
         left: 50%;
