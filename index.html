@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -32,10 +33,30 @@
             <div class="hamburger-line"></div>
         </button>
         <ul id="nav">
-            <li><a href="#certificates" id="certificates-link">Certificates</a></li>
-            <li><a href="#projects" id="projects-link">Projects</a></li>
-            <li><a href="#about" id="about-link">About Me</a></li>
-            <li><a href="#skills" id="skills-link">Skills</a></li>
+            <li>
+                <a href="#certificates" id="certificates-link" data-text="Certificates">
+                    <i class="bi bi-award"></i>
+                    <span style="display: none;">Certificates</span>
+                </a>
+            </li>
+            <li>
+                <a href="#projects" id="projects-link" data-text="Projects">
+                    <i class="bi bi-code-square"></i>
+                    <span style="display: none;">Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="#about" id="about-link" data-text="About">
+                    <i class="bi bi-person-arms-up"></i>
+                    <span style="display: none;">About Me</span>
+                </a>
+            </li>
+            <li>
+                <a href="#skills" id="skills-link" data-text="Skills">
+                    <i class="bi bi-motherboard"></i>
+                    <span style="display: none;">Skills</span>
+                </a>
+            </li>
         </ul>
         <div class="nav-effects"></div>
     </nav>
@@ -49,7 +70,7 @@
         </div>
 
         <div class="svg-container">
-            <svg id="circuit-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+            <svg id="circuit-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
                 <defs>
                     <filter id="glow">
                         <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
@@ -65,7 +86,7 @@
             </svg>
         </div>
         <div class="svg-container-mobile">
-            <svg id="circuit-svg-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" preserveAspectRatio="none">
+            <svg id="circuit-svg-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice">
                 <defs>
                     <filter id="glow-mobile">
                         <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur1"/>
@@ -85,7 +106,8 @@
     <section id="certificates">
         <div class="section-header">
             <h2>My Certificates</h2>
-            <span class="close-section">&times;</span>
+            <span class="close-section"><i class="bi bi-x-lg"></i></span>
+            <div class="section-divider"></div>
         </div>
         <div class="filters">
             <button class="filter-btn active" data-category="all">All</button>
@@ -104,7 +126,8 @@
     <section id="projects">
         <div class="section-header">
             <h2>My Projects</h2>
-            <span class="close-section">&times;</span>
+            <span class="close-section"><i class="bi bi-x-lg"></i></span>
+            <div class="section-divider"></div>
         </div>
         <div class="project-grid"></div>
     </section>
@@ -112,7 +135,8 @@
     <section id="about">
         <div class="section-header">
             <h2>About Me</h2>
-            <span class="close-section">&times;</span>
+            <span class="close-section"><i class="bi bi-x-lg"></i></span>
+            <div class="section-divider"></div>
         </div>
         <div class="about-tabs">
             <button class="tab-btn active" data-tab="about-tab">About</button>
@@ -242,91 +266,133 @@
     <section id="skills">
         <div class="section-header">
             <h2>My Skills</h2>
-            <span class="close-section">&times;</span>
+            <span class="close-section"><i class="bi bi-x-lg"></i></span>
+            <div class="section-divider"></div>
         </div>
         <div class="skills-container">
-            <div class="skills-category" data-bg="code1.png">
-                <h3>Web Development</h3>
-                <div class="skills-grid">
-                    <div class="skill-item" data-skill="HTML">
-                        <div class="skill-icon">HTML</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item" data-skill="CSS">
-                        <div class="skill-icon">CSS</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item" data-skill="JavaScript">
-                        <div class="skill-icon">JavaScript</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 40%"></div>
+            <div class="skills-visualization">
+                <div class="skills-orbit">
+                    <div class="orbit-center">
+                        <div class="center-icon">
+                            <i class="bi bi-pc-display-horizontal"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="skills-category" data-bg="python.jpg">
-                <h3>Programming Languages</h3>
-                <div class="skills-grid">
-                    <div class="skill-item" data-skill="Python">
-                        <div class="skill-icon">Python</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%"></div>
+            <div class="skills-details">
+                <div class="skills-category">
+                    <h3>Web Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="html">
+                            <h4><i class="bi bi-filetype-html"></i> HTML</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 90%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item" data-skill="C">
-                        <div class="skill-icon">C</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 30%"></div>
+                        <div class="skill-card" data-skill="css">
+                            <h4><i class="bi bi-filetype-css"></i> CSS</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 85%"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item" data-skill="C#">
-                        <div class="skill-icon">C#</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 20%"></div>
+                        <div class="skill-card" data-skill="javascript">
+                            <h4><i class="bi bi-filetype-js"></i> JavaScript</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 60%"></div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="skills-category" data-bg="code2.jpg">
-                <h3>Frameworks & Libraries</h3>
-                <div class="skills-grid">
-                    <div class="skill-item" data-skill="Django">
-                        <div class="skill-icon">Django</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 50%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item" data-skill="jQuery">
-                        <div class="skill-icon">jQuery</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 40%"></div>
+                        <div class="skill-card" data-skill="react">
+                            <h4><i class="bi bi-filetype-jsx"></i> React</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 40%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="skills-category" data-bg="csharp.png">
-                <h3>Other Technologies</h3>
-                <div class="skills-grid">
-                    <div class="skill-item" data-skill="Git">
-                        <div class="skill-icon">Git</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 50%"></div>
+                <div class="skills-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="python">
+                            <h4><i class="bi bi-filetype-py"></i> Python</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="django">
+                            <h4><i class="bi bi-filetype-py"></i> Django</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="c">
+                            <h4><i class="bi bi-filetype-c"></i> C</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="csharp">
+                            <h4><i class="bi bi-filetype-cs"></i> C#</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 25%"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="SQL">
-                        <div class="skill-icon">SQL</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 40%"></div>
+                </div>
+                <div class="skills-category">
+                    <h3>Databases</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="sql">
+                            <h4><i class="bi bi-database"></i> SQL</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="mysql">
+                            <h4><i class="bi bi-database"></i> MySQL</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="postgresql">
+                            <h4><i class="bi bi-database"></i> PostgreSQL</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar pending" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="mongodb">
+                            <h4><i class="bi bi-database"></i> MongoDB</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar pending" style="width: 5%"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="skill-item" data-skill="PHP">
-                        <div class="skill-icon">PHP</div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 30%"></div>
+                </div>
+                <div class="skills-category">
+                    <h3>Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="vscode">
+                            <h4><i class="bi bi-code-square"></i> VS Code</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="github">
+                            <h4><i class="bi bi-github"></i> GitHub</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="docker">
+                            <h4><i class="bi bi-docker"></i> Docker</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar pending" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="aws">
+                            <h4><i class="bi bi-cloud"></i> AWS</h4>
+                            <div class="skill-progress">
+                                <div class="skill-progress-bar pending" style="width: 5%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,15 +420,27 @@
                     <pre class="project-modal-tech"></pre>
                 </div>
                 <div class="project-image-column">
-                    <video class="project-modal-video" autoplay loop muted></video>
+                    <video class="project-modal-video" autoplay loop muted playsinline>
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <div class="project-divider"></div>
                     <p class="project-modal-description"></p>
                 </div>
             </div>
         </div>
     </div>
-
+     <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('worker.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch(error => console.error('Service Worker Registration Failed:', error));
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+
+    
 </body>
 </html>
