@@ -23,8 +23,6 @@
     --font-code: 'Fira Code', monospace;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap');
-
 body {
     margin: 0;
     padding: 0;
@@ -86,7 +84,7 @@ nav ul {
     padding: 0;
     gap: 40px;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 nav ul li {
@@ -101,7 +99,6 @@ nav ul li a {
     font-weight: 600;
     position: relative;
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(124, 58, 237, 0.2));
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
     border: 1px solid rgba(59, 130, 246, 0.4);
     font-size: 0.95rem;
     letter-spacing: 0.5px;
@@ -114,6 +111,12 @@ nav ul li a {
     transition: all 0.5s cubic-bezier(0.33, 1, 0.68, 1);
     overflow: hidden;
     padding: 0;
+}
+
+/* Desktop: the round nav buttons show only the icon (text label appears via the
+   ::after hover reveal). On mobile the drawer re-shows these spans. */
+nav ul li a span {
+    display: none;
 }
 
 nav ul li a i {
@@ -158,7 +161,7 @@ nav ul li a:hover::after {
 nav ul li a.active {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    box-shadow: 0 0 25px var(--primary-light), 0 0 35px rgba(124, 58, 237, 0.4);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
     animation: hexPulse 2s infinite;
 }
 
@@ -199,12 +202,13 @@ nav ul li a.active {
     border-radius: 50%;
     transition: all 0.3s ease;
     padding: 0;
+    line-height: 1;
 }
 
 .close-section i {
     margin: 0;
-    position: relative;
-    top: 1px;
+    line-height: 1;
+    display: block;
 }
 
 .close-section:hover {
@@ -403,48 +407,48 @@ nav ul li a.active {
     background: var(--skill-pending-color);
 }
 
-.project-toggle {
-    margin: 0 auto 20px;
-    width: 90%;
-}
-
-.toggle-container {
-    position: relative;
+/* Language composition bar (GitHub-style) + tags */
+.lang-bar {
     display: flex;
-    background: rgba(59, 130, 246, 0.1);
-    border-radius: 30px;
-    padding: 5px;
-    border: 1px solid var(--primary-light);
     width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+    background: rgba(15, 23, 42, 0.6);
 }
 
-.toggle-slider {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    height: calc(100% - 10px);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    z-index: 0;
-    width: 33.33%;
+.lang-segment {
+    height: 100%;
+    display: block;
 }
 
-.toggle-option {
-    position: relative;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    z-index: 1;
+.lang-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 12px;
+}
+
+.lang-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
     color: var(--text-light);
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    flex: 1;
-    text-align: center;
+    white-space: nowrap;
 }
 
-.toggle-option.active {
-    color: var(--text-lighter);
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.lang-pct {
+    color: rgba(226, 232, 240, 0.55);
+    font-size: 0.75rem;
 }
 
 .main-container {
@@ -532,16 +536,66 @@ path, ellipse {
     stroke: #00ff00;
     stroke-width: 3px;
     fill: none;
-    filter: url(#glow);
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: dash 3s linear forwards, pulse 2s ease-in-out infinite;
-    transition: all 0.5s ease;
+    stroke-linecap: round;
+    stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
 }
 
 @keyframes dash {
     to { stroke-dashoffset: 0; }
+}
+
+/* Stage 1 — power-on flicker. Soft, breathing pulses (not a hard strobe) that
+   swell and settle as the circuit warms up, easing to black so the trace begins
+   from a clean fade rather than a snap. */
+@keyframes circuitFlicker {
+    0%   { opacity: 0; }
+    18%  { opacity: 0.65; }
+    34%  { opacity: 0.32; }
+    52%  { opacity: 0.88; }
+    72%  { opacity: 0.5; }
+    100% { opacity: 0; }
+}
+
+.circuit-flicker {
+    animation: circuitFlicker 0.9s ease-in-out forwards;
+}
+
+/* Stage 2 — scattered blink-in. Each trace flickers on ~4-5 times then settles
+   (forwards holds it lit). Per-element delay is set inline so position-hashed
+   groups light up at staggered times. Duration kept in sync with BLINK_MS. */
+@keyframes circuitBlink {
+    0%   { opacity: 0; }
+    11%  { opacity: 1; }
+    21%  { opacity: 0.08; }
+    35%  { opacity: 1; }
+    46%  { opacity: 0.12; }
+    60%  { opacity: 1; }
+    71%  { opacity: 0.1; }
+    85%  { opacity: 1; }
+    92%  { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.circuit-blink {
+    animation: circuitBlink 0.95s linear forwards;
+}
+
+/* Stage 3 — the bloomed halo gently breathes. Only opacity animates (composited),
+   so the glow stays cheap once it's painted. */
+@keyframes circuitBreathe {
+    0%, 100% { opacity: 0.8; }
+    50%      { opacity: 1; }
+}
+
+.circuit-breathe {
+    animation: circuitBreathe 4.5s ease-in-out infinite;
+    will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .circuit-blink { animation: none; opacity: 1 !important; }
+    .circuit-flicker, .circuit-breathe { animation: none; }
 }
 
 @keyframes pulse {
@@ -758,90 +812,106 @@ section::-webkit-scrollbar-thumb {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
+    gap: 30px;
     padding: 25px;
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
     background: rgba(30, 41, 59, 0.7);
     border-radius: 18px;
-    padding: 20px;
-    margin: 15px;
+    padding: 24px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border: 1px solid var(--primary-light);
+    cursor: pointer;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+    border-color: var(--secondary-light);
 }
 
-.project-image-container {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-    border-radius: 12px;
-    margin: 0 auto 15px;
-    border: 1px solid rgba(59, 130, 246, 0.3);
+.project-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
 }
 
-.project-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-    transition: transform 0.5s ease;
+.project-type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--primary-light);
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    padding: 4px 12px;
+    border-radius: 20px;
 }
 
-.project-image:hover {
-    transform: scale(1.05);
+.project-status {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: #fff;
 }
 
-.project-content-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    display: none;
-    padding: 20px;
-    overflow-y: auto;
-    border-radius: 12px;
-}
-
-.project-card[data-view="description"] .description-content,
-.project-card[data-view="info"] .info-content {
-    display: block;
-}
+.status-shipped, .status-live { background: linear-gradient(135deg, #16a34a, #22c55e); }
+.status-beta { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.status-coming-soon { background: linear-gradient(135deg, var(--secondary-color), var(--accent-color)); }
+.status-in-development { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); }
+.status-archived { background: linear-gradient(135deg, #475569, #64748b); }
 
 .project-title {
-    font-size: 1.3rem;
-    margin: 15px 0;
+    font-size: 1.4rem;
+    margin: 0 0 14px;
     color: var(--text-lighter);
-    text-align: center;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .project-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     color: var(--text-light);
-    margin: 0;
+    margin: 0 0 22px;
+    /* Clamp on the card so every card is the same density; full text in the modal */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.project-info {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: var(--text-light);
-    white-space: pre-wrap;
-    font-family: var(--font-code);
-    margin: 0;
+.project-langs {
+    margin-top: auto;
+}
+
+.project-readmore {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover .project-readmore {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.lang-more {
+    color: rgba(226, 232, 240, 0.5);
+    font-style: italic;
 }
 
 .about-tabs {
@@ -890,6 +960,22 @@ section::-webkit-scrollbar-thumb {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Staggered card entrance (project + certificate grids). `backwards` fill keeps
+   each card hidden through its delay, then reverts to normal styling on finish
+   so the :hover lift still works. Per-card delay is set inline. */
+@keyframes cardEnter {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card-enter {
+    animation: cardEnter 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-enter { animation: none; }
 }
 
 .about-content {
@@ -1030,6 +1116,8 @@ section::-webkit-scrollbar-thumb {
     border: 3px solid var(--primary-light);
     box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
     transition: transform 0.5s ease;
+    /* Don't let the column flexbox squash the circle when a card's text is taller */
+    flex-shrink: 0;
 }
 
 .education-card:hover img, .experience-card:hover .experience-front img {
@@ -1171,9 +1259,19 @@ section::-webkit-scrollbar-thumb {
     max-width: 90%;
     max-height: 75vh;
     border-radius: 8px;
-    margin: 25px 0;
+    margin: 25px 0 15px;
     box-shadow: 0 0 25px rgba(0,0,0,0.6);
     border: 1px solid var(--primary-light);
+}
+
+#modal-caption {
+    margin: 0;
+    color: var(--text-lighter);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    max-width: 90%;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
 }
 
 #project-modal {
@@ -1187,86 +1285,63 @@ section::-webkit-scrollbar-thumb {
 .project-modal-content {
     max-width: 90%;
     max-height: 90vh;
-    width: 1300px;
+    width: 720px;
     background: var(--bg-medium);
     border-radius: 18px;
-    padding: 40px;
+    padding: 45px;
     box-shadow: 0 0 40px var(--primary-light);
     position: relative;
     border: 1px solid var(--primary-light);
     overflow: hidden;
 }
 
-.project-modal-columns {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    height: 75vh;
-}
-
-.project-info-column {
-    padding-right: 30px;
-    border-right: 1px solid var(--primary-light);
+.project-modal-body {
+    max-height: 70vh;
     overflow-y: auto;
+    padding-right: 10px;
 }
 
-.project-image-column {
+.project-modal-title {
+    color: var(--text-lighter);
+    font-size: 2rem;
+    margin: 0 0 22px;
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    line-height: 1.2;
 }
 
-.project-modal-video {
-    width: 95%;
-    height: 65%;
-    margin: 0 auto;
-    object-fit: contain;
-    border-radius: 12px;
-    background: #000;
-    border: 1px solid var(--primary-light);
-    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+.project-modal-tech {
+    background: rgba(15, 23, 42, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.project-modal-tech .lang-tags {
+    margin-top: 14px;
 }
 
 .project-divider {
     height: 1px;
     background: var(--primary-light);
-    margin: 20px 0;
+    margin: 25px 0;
     opacity: 0.5;
-}
-
-.project-modal-title {
-    color: var(--text-lighter);
-    font-size: 1.8rem;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.project-modal-tech {
-    color: var(--text-light);
-    font-size: 1rem;
-    line-height: 1.8;
-    margin: 0;
-    white-space: pre-wrap;
-    font-family: var(--font-code);
-    background: rgba(30, 41, 59, 0.7);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--primary-light);
 }
 
 .project-modal-description {
     color: var(--text-light);
-    line-height: 1.8;
+    line-height: 1.85;
     font-size: 1.1rem;
-    margin-top: 20px;
+    margin: 0;
 }
 
 .modal .close {
     position: absolute;
     top: 20px;
     right: 20px;
-    font-size: 35px;
+    font-size: 24px;
     color: var(--text-lighter);
     cursor: pointer;
     z-index: 2;
@@ -1279,6 +1354,13 @@ section::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    line-height: 1;
+    padding: 0;
+}
+
+.modal .close i {
+    line-height: 1;
+    display: block;
 }
 
 .modal .close:hover {
@@ -1294,8 +1376,8 @@ section::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,0.6);
     color: var(--text-lighter);
     border: 1px solid var(--primary-light);
-    padding: 18px;
-    font-size: 28px;
+    padding: 0;
+    font-size: 24px;
     cursor: pointer;
     border-radius: 50%;
     z-index: 2;
@@ -1303,9 +1385,16 @@ section::-webkit-scrollbar-thumb {
     opacity: 0.8;
     width: 60px;
     height: 60px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1;
+}
+
+.arrow i {
+    line-height: 1;
+    display: block;
 }
 
 .arrow:hover {
@@ -1434,10 +1523,6 @@ section::-webkit-scrollbar-thumb {
     .skills-grid {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
-
-    .project-modal-columns {
-        grid-template-columns: 1fr 1.5fr;
-    }
 }
 
 /* MOBILE RESPONSIVE STYLES (up to 768px) */
@@ -1490,8 +1575,11 @@ section::-webkit-scrollbar-thumb {
     }
 
     .svg-container-mobile {
-        z-index: -1; 
+        z-index: -1;
         overflow: visible;
+        /* Nudge the circuit down/right a touch (screen-space, before the rotate) */
+        top: calc(50% + 10px);
+        left: calc(50% + 5px);
     }
 
     #circuit-svg-mobile {
@@ -1541,16 +1629,19 @@ section::-webkit-scrollbar-thumb {
         transition: all 0.3s ease;
     }
     
+    /* Clean centered X: each outer line slides to the vertical centre (9px =
+       gap between a line's centre and the container centre) then rotates about
+       its own centre, so they cross exactly. */
     .hamburger.active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: translateY(9px) rotate(45deg);
     }
-    
+
     .hamburger.active .hamburger-line:nth-child(2) {
         opacity: 0;
     }
-    
+
     .hamburger.active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
+        transform: translateY(-9px) rotate(-45deg);
     }
 
     #nav {
@@ -1596,8 +1687,16 @@ section::-webkit-scrollbar-thumb {
     }
 
     #nav li a i {
+        /* Reset the desktop absolute-centering so the icon sits inline, left of
+           the label, instead of overlapping it. */
+        position: static;
+        transform: none;
+        left: auto;
+        width: 24px;
+        text-align: center;
         margin-right: 15px;
         font-size: 1.3rem;
+        flex-shrink: 0;
     }
 
     #nav li a span {

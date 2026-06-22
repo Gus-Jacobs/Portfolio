@@ -47,5 +47,18 @@
     { "category": "other", "image": "certificates/Other/3.jpeg", "title": "NKU SAP Certificate" },
     { "category": "other", "image": "certificates/Other/coming-soon.jpg", "title": "NKU STAR Certificate" },
     { "category": "other", "image": "certificates/Other/coming-soon.jpg", "title": "NKU Software Engineering Certificate" },
-    { "category": "other", "image": "certificates/Other/coming-soon.jpg", "title": "NKU Cyber Security Certificate" }
+    { "category": "other", "image": "certificates/Other/coming-soon.jpg", "title": "NKU Cyber Security Certificate" },
+    { "category": "google", "image": "certificates/Google/AI Essentials.jpg", "title": "Google AI Essentials" },
+    { "category": "google", "image": "certificates/Google/Advanced data anaytics.jpg", "title": "Google Advanced Data Analytics" },
+    { "category": "google", "image": "certificates/Google/Business Intelligence.jpg", "title": "Google Business Intelligence" },
+    { "category": "google", "image": "certificates/Google/Coursera EFD53CGLXMWW.jpg", "title": "Google Prompting Essentials" },
+    { "category": "google", "image": "certificates/Google/Cybersecurity.jpg", "title": "Google Cybersecurity Certificate" },
+    { "category": "google", "image": "certificates/Google/Data Analytics.jpg", "title": "Google Data Analytics Certificate" },
+    { "category": "google", "image": "certificates/Google/GoogleDataAnalyticsProfessionalCertificatev2_Badge20250719-27-2wol49.jpg", "title": "Google Data Analytics Professional Certificate" },
+    { "category": "google", "image": "certificates/Google/IT.jpg", "title": "Google IT Support Certificate" },
+    { "category": "google", "image": "certificates/Google/UX.jpg", "title": "Google UX Design Certificate" },
+    { "category": "nku", "image": "certificates/NKU/1779403502614-c505fccc-5eee-4dc0-a3ce-b461dd89f2c2_1.jpg", "title": "NKU Deans List Spring 2026" },
+    { "category": "nku", "image": "certificates/NKU/1779403720680-c9ff5b45-3adf-4068-b199-b973de5dbefd_1.jpg", "title": "NKU Deans List Fall 2025" },
+    { "category": "nku", "image": "certificates/NKU/1779403910031-bd1445b4-ff98-4005-ab38-9ba061b76f92_1.jpg", "title": "NKU Deans List Spring 2025" },
+    { "category": "nvidia", "image": "certificates/NVIDIA/nvidia.jpg", "title": "NVIDIA AI Infrastructure and Operations Certificate" }
 ]

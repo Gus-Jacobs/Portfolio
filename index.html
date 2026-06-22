@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -37,25 +39,25 @@
             <li>
                 <a href="#certificates" id="certificates-link" data-text="Certificates">
                     <i class="bi bi-award"></i>
-                    <span style="display: none;">Certificates</span>
+                    <span>Certificates</span>
                 </a>
             </li>
             <li>
                 <a href="#projects" id="projects-link" data-text="Projects">
                     <i class="bi bi-code-square"></i>
-                    <span style="display: none;">Projects</span>
+                    <span>Projects</span>
                 </a>
             </li>
             <li>
                 <a href="#about" id="about-link" data-text="About">
                     <i class="bi bi-person-arms-up"></i>
-                    <span style="display: none;">About Me</span>
+                    <span>About Me</span>
                 </a>
             </li>
             <li>
                 <a href="#skills" id="skills-link" data-text="Skills">
                     <i class="bi bi-motherboard"></i>
-                    <span style="display: none;">Skills</span>
+                    <span>Skills</span>
                 </a>
             </li>
         </ul>
@@ -114,6 +116,9 @@
             <button class="filter-btn active" data-category="all">All</button>
             <button class="filter-btn" data-category="w3schools">W3Schools</button>
             <button class="filter-btn" data-category="qrps">QRPs</button>
+            <button class="filter-btn" data-category="google">Google</button>
+            <button class="filter-btn" data-category="nku">NKU</button>
+            <button class="filter-btn" data-category="nvidia">NVIDIA</button>
             <button class="filter-btn" data-category="other">Other</button>
         </div>
         <div class="cert-grid"></div>
@@ -147,18 +152,18 @@
         <div class="tab-content">
             <div id="about-tab" class="tab-pane active">
                 <div class="about-content">
-                    <img src="img/profile.jpg" alt="Profile Picture" class="profile-img">
+                    <img src="img/profile.jpg?v=2" alt="Profile Picture" class="profile-img">
                     <div class="bio">
                         <p>Growing up on a farm taught me the value of hard work and problem-solving from an early age. These formative years instilled in me a strong work ethic and the ability to tackle challenges head-on, qualities that have served me well in both my professional and academic pursuits.</p>
                         <p>At 13, my uncle introduced me to coding, sparking a passion that would shape my future. I quickly mastered HTML, CSS, and JavaScript, building my first websites within months. This early exposure to technology ignited my curiosity and set me on the path to becoming a developer.</p>
                         <p>Now pursuing Computer Science in college, I bring the same determination I developed doing farm work and fixing equipment to my software development. My unique background gives me a practical perspective on problem-solving and a relentless drive to create efficient, effective solutions.</p>
                         <p>When I'm not coding, you can find me working on personal projects, learning new technologies, or enjoying outdoor activities. I believe in continuous learning and pushing beyond my comfort zone to grow both personally and professionally.</p>
                         <div class="bio-links">
-                            <a href="https://www.linkedin.com/in/augustine-jacobs-63a3132bb/" target="_blank" class="bio-link linkedin">
-                                <i class="fab fa-linkedin"></i> LinkedIn
+                            <a href="https://www.linkedin.com/in/augustine-jacobs-63a3132bb/" target="_blank" rel="noopener" class="bio-link linkedin">
+                                <i class="bi bi-linkedin"></i> LinkedIn
                             </a>
-                            <a href="https://github.com/Gus-Jacobs" target="_blank" class="bio-link github">
-                                <i class="fab fa-github"></i> GitHub
+                            <a href="https://github.com/Gus-Jacobs" target="_blank" rel="noopener" class="bio-link github">
+                                <i class="bi bi-github"></i> GitHub
                             </a>
                         </div>
                     </div>
@@ -214,7 +219,7 @@
                                 <h3>FedEx Ground</h3>
                                 <p>Position: Package Handler</p>
                                 <p>Location: Independence, Kentucky</p>
-                                <p>Time There: June 2024 - Present</p>
+                                <p>Time There: June 2024 - June 2025</p>
                                 <button class="expand-btn">Click to Expand</button>
                             </div>
                         </div>
@@ -410,32 +415,25 @@
     </section>
 
     <div id="image-modal" class="modal">
-        <span class="close">&times;</span>
+        <span class="close"><i class="bi bi-x-lg"></i></span>
         <div class="modal-content">
             <img id="modal-image">
-            <button class="arrow prev-arrow">&larr;</button>
-            <button class="arrow next-arrow">&rarr;</button>
+            <p id="modal-caption"></p>
+            <button class="arrow prev-arrow"><i class="bi bi-arrow-left"></i></button>
+            <button class="arrow next-arrow"><i class="bi bi-arrow-right"></i></button>
         </div>
     </div>
 
     <div id="project-modal" class="modal">
         <div class="modal-content project-modal-content">
-            <span class="close">&times;</span>
-            <button class="arrow prev-arrow">&larr;</button>
-            <button class="arrow next-arrow">&rarr;</button>
-            <div class="project-modal-columns">
-                <div class="project-info-column">
-                    <h3 class="project-modal-title"></h3>
-                    <pre class="project-modal-tech"></pre>
-                </div>
-                <div class="project-image-column">
-                    <video class="project-modal-video" autoplay loop muted playsinline>
-                        <source src="" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="project-divider"></div>
-                    <p class="project-modal-description"></p>
-                </div>
+            <span class="close"><i class="bi bi-x-lg"></i></span>
+            <button class="arrow prev-arrow"><i class="bi bi-arrow-left"></i></button>
+            <button class="arrow next-arrow"><i class="bi bi-arrow-right"></i></button>
+            <div class="project-modal-body">
+                <h3 class="project-modal-title"></h3>
+                <div class="project-modal-tech"></div>
+                <div class="project-divider"></div>
+                <p class="project-modal-description"></p>
             </div>
         </div>
     </div>
